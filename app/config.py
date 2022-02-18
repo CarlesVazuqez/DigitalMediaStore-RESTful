@@ -25,6 +25,7 @@ class DesarrolloConfig(Config):
 class PruebasConfig(Config):
     DEBUG = True
     TESTING = True
+    SQLALCHEMY_DATABASE_URI = os.environ["SQLALCHEMY_DATABASE_URI_TEST"]
 
 
 class PreProduccionConfig(Config):

@@ -7,7 +7,7 @@ from flask_cors import CORS
 from app.extensions import api
 from app.extensions.database import db
 from app.extensions.schema import ma
-from app.views import albums, artists, hello
+from app.views import albums, artists, hello, tracks
 
 
 def create_app(config, **kwargs):
@@ -31,7 +31,7 @@ def create_app(config, **kwargs):
         api.register_blueprint(hello.blp)
         api.register_blueprint(artists.blp)
         api.register_blueprint(albums.blp)
-
+        api.register_blueprint(tracks.blp)
     try:
         os.makedirs(app.instance_path)
     except OSError:
