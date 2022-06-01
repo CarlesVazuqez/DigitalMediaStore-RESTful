@@ -5,11 +5,11 @@ from app.extensions.api import CursorPage  # noqa:F401
 from app.extensions.api import Blueprint
 
 # from app.models import Track
-from app.models.tracks import Track
+from app.models import Track
 
-from .schemas import TrackSchema
+from .schemas import TracksAlbumSchema, TrackSchema
 
-blp = Blueprint("Tracks", __name__, url_prefix="/api/tracks", description="API endpoints about songs")
+blp = Blueprint("Tracks", __name__, url_prefix="/api/tracks", description="API endpoints about artists")
 
 
 @blp.route("/")
@@ -18,7 +18,7 @@ class Tracks(MethodView):
     # @blp.arguments(TrackQueryArgsSchema, location="query")
     @blp.response(200, TrackSchema(many=True))
     @blp.paginate(Page)
-    @blp.doc(description="Get information for a single track")
+    @blp.doc(description="Get information for many tracks")
     def get(self):
         """List Tracks"""
         ret = Track.find_all()
